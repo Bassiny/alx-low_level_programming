@@ -2,21 +2,36 @@
 
 /**
  * cap_string - capitalizes all words of a string
- * @n: the string without capitalisation
+ * @str: the string without capitalisation
  * Return: string with capitalisation
  */
-char *cap_string(char *n)
+char *cap_string(char *str)
 {
 	int i = 0;
+	int capitalize = 1;
 
-	while (n[i] != '\0')
+	while (str[i] != '\0')
 	{
-		if (n[i] == ' ')
+		if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' ||
+		str[i] == ',' || str[i] == ';' || str[i] == '.' ||
+		str[i] == '!' || str[i] == '?' || str[i] == '"' ||
+		str[i] == '(' || str[i] == ')' || str[i] == '{' ||
+		str[i] == '}')
 		{
-			if (n[i + 1] >= 'a' && n[i + 1] <= 'z')
-				n[i + 1] = n[i + 1] - 32;
+			capitalize = 1;
 		}
+		else if (capitalize && str[i] >= 'a' && str[i] <= 'z')
+		{
+			str[i] = str[i] - 32;
+			capitalize = 0;
+		}
+		else
+		{
+			capitalize = 0;
+		}
+
 		i++;
 	}
-	return (n);
+
+	return (str);
 }
