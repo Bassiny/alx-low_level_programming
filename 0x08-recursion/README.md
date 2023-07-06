@@ -4,4 +4,8 @@
 
 Write a function that prints a string, followed by a new line.
 
+## 1. Why is it so important to dream?
+
+Write a function that prints a string in reverse.
+
 ##
